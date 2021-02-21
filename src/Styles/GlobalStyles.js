@@ -8,7 +8,9 @@ export default  createGlobalStyle`
         box-sizing:border-box;
     }
     body{
-        background-color:red;
+        background:linear-gradient(170deg, white 50%, gray 50%);
+        width:100vw;
+        height:100vh;
         font-size:14px;
         font-family: 'Open Sans', sans-serif;
     }
@@ -17,5 +19,9 @@ export default  createGlobalStyle`
     }
     input{
         outline : none;
+    }
+    #root{
+        width:100vw;
+        height:100vh;
     }
 `;
