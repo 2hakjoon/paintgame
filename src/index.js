@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './Components/home';
 import socketio from 'socket.io-client';
+import App from './Components/App';
 
 const socket = socketio.connect('http://localhost:4000');
 
