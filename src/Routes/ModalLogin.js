@@ -4,6 +4,11 @@ import Input from "../Components/Input";
 import { Bigtext } from "../Components/Text";
 
 const Wrapper = styled.div`
+    background-color:black;
+    opacity:0.5;
+    position : absolute;
+    top:0;
+    left:0;
     width : 100%;
     height : 100%;
     display :flex;
@@ -33,7 +38,7 @@ const Form = styled.form`
 `
 
 
-export const LoginPage = () => {
+export const ModalLogin = () => {
     return(
         <Wrapper>
             <Box>

@@ -8,7 +8,7 @@ export const makeUser = () =>{
 
 export const CheckUser = () => {
     const userId = localStorage.getItem(ITEMNAME_ID)
-    if(!userId){
+    if(userId){
         UserLoggedIn = true
     }
     else {
