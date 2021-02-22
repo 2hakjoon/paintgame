@@ -1,30 +1,39 @@
 
 let canvas=''
 let ctx=''
-  
+let colors=[]
+let mode=''
 const INITIAL_COLOR = "#2c2c2c";
 const CANVAS_SIZE = 600;
+const CANVAS_PIXEL = CANVAS_SIZE*2;
 
 export const initCanvas = () =>{
   canvas = document.getElementById("jsCanvas");
   
   ctx = canvas.getContext("2d");
-  //const colors = document.getElementsByClassName("jsColor");
+  colors = document.getElementsByClassName("jsColor");
   //const controls = document.getElementById("jsControls");
-  //const mode = document.getElementById("jsMode");
+  mode = document.getElementById("jsMode");
 
-  canvas.width = CANVAS_SIZE*2;
-  canvas.height = CANVAS_SIZE*2;
+  canvas.width = CANVAS_PIXEL;
+  canvas.height = CANVAS_PIXEL;
   
   ctx.fillStyle = "white";
-  ctx.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
+  ctx.fillRect(0, 0, CANVAS_PIXEL, CANVAS_PIXEL);
   ctx.strokeStyle = INITIAL_COLOR;
   ctx.fillStyle = INITIAL_COLOR;
   ctx.lineWidth = 2.5;
+
+  Array.from(colors).forEach((color) =>
+  color.addEventListener("click", handleColorClick)
+  );
+
+  if (mode) {
+    mode.addEventListener("click", handlePaintClick);
+  }
   
 }
 let painting = false;
-let filling = false;
 
 
 function stopPainting() {
@@ -67,19 +76,13 @@ function onMouseMove(event) {
 }
 
 function handleColorClick(event) {
-  const color = event.target.style.backgroundColor;
+  const color = event.target.id;
   ctx.strokeStyle = color;
   ctx.fillStyle = color;
 }
 
-function handleModeClick() {
-  if (filling === true) {
-    filling = false;
-    //mode.innerText = "Fill";
-  } else {
-    filling = true;
-    //mode.innerText = "Paint";
-  }
+function handlePaintClick() {
+  fill();
 }
 
 const fill = (color = null) => {
@@ -87,29 +90,15 @@ const fill = (color = null) => {
   if (color !== null) {
     ctx.fillStyle = color;
   }
-  ctx.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
+  ctx.fillRect(0, 0, CANVAS_PIXEL, CANVAS_PIXEL);
   ctx.fillStyle = currentColor;
 };
 
-function handleCanvasClick() {
-  if (filling) {
-    fill();
-    //getSocket().emit(window.events.fill, { color: ctx.fillStyle });
-  }
-}
 
 function handleCM(event) {
   event.preventDefault();
 }
-/*
-Array.from(colors).forEach((color) =>
-  color.addEventListener("click", handleColorClick)
-);
 
-if (mode) {
-  mode.addEventListener("click", handleModeClick);
-}
-*/
 
 export const handleBeganPath = ({ x, y }) => {
   beginPath(x, y);
@@ -125,7 +114,6 @@ export const disableCanvas = () => {
   canvas.removeEventListener("mousedown", startPainting);
   canvas.removeEventListener("mouseup", stopPainting);
   canvas.removeEventListener("mouseleave", stopPainting);
-  canvas.removeEventListener("click", handleCanvasClick);
 };
 
 export const enableCanvas = () => {
@@ -133,7 +121,6 @@ export const enableCanvas = () => {
   canvas.addEventListener("mousedown", startPainting);
   canvas.addEventListener("mouseup", stopPainting);
   canvas.addEventListener("mouseleave", stopPainting);
-  canvas.addEventListener("click", handleCanvasClick);
 };
 /*
 export const hideControls = () => {

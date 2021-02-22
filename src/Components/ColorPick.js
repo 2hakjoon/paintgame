@@ -8,14 +8,16 @@ const getColor = (color) => {
 
 const Circle = styled.div`
     ${props => getColor(props.color)}
-    width : 100px;
-    height : 100px;
-    border-radius : 43px;
+    width : 60px;
+    height : 60px;
+    border-radius : 27px;
+    cursor: pointer;
+    box-shadow:${props => props.theme.smallShadow};
 `
 
 export const ColorPick = ({color}) => {
     return (
-        <Circle color={color} id="jsColor"/>
+        <Circle id={color} color={color} className="jsColor"/>
     )
 
 }
