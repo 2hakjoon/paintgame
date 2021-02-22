@@ -9,7 +9,6 @@ import Theme from "../Styles/Theme";
 import { enableCanvas, initCanvas } from "../Routes/GameRoom/CanvasController";
 
 
-
 function App() {
     CheckUser()
     

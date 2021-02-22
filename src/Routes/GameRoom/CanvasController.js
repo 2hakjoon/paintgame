@@ -1,3 +1,4 @@
+import { commends } from "../../Socket";
 
 let canvas=''
 let ctx=''
