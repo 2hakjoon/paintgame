@@ -1,4 +1,4 @@
-import { commends } from "../../Socket";
+import { commends, getSocket } from "../../Socket";
 
 let canvas=''
 let ctx=''
@@ -65,14 +65,14 @@ function onMouseMove(event) {
   const y = event.offsetY*2;
   if (!painting) {
     beginPath(x, y);
-    //getSocket().emit(window.events.beginPath, { x, y });
+    getSocket().emit(commends.beginPath, { x, y });
   } else {
     strokePath(x, y);
-    /*getSocket().emit(window.events.strokePath, {
+    getSocket().emit(commends.strokePath, {
       x,
       y,
       color: ctx.strokeStyle,
-    });*/
+    });
   }
 }
 

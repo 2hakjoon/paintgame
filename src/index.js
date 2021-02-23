@@ -1,10 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './Components/App';
-import { initSocket } from './Socket';
-
-initSocket()
-
 ReactDOM.render(
   <React.StrictMode>
     <App />
