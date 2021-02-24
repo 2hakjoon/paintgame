@@ -84,6 +84,7 @@ function handleColorClick(event) {
 
 function handlePaintClick() {
   fill();
+  getSocket().emit(commends.fill, ctx.fillStyle)
 }
 
 const fill = (color = null) => {

@@ -1,5 +1,5 @@
 import socketio from "socket.io-client";
-import { handleBeganPath, handleStrokedPath } from "./Routes/GameRoom/CanvasController";
+import { handleBeganPath, handleFilled, handleStrokedPath } from "./Routes/GameRoom/CanvasController";
 
 const socket = socketio.connect('http://localhost:4000');
 
@@ -13,12 +13,14 @@ socket.on ('setCommend', async (data) => {
 
     
     socket.on(commends.beganPath, (data)=>{
-        console.log(data)
         handleBeganPath(data);
     });
     socket.on(commends.strokedPath, (data)=>{
-        console.log(data)
         handleStrokedPath(data);
+    });
+    
+    socket.on(commends.fill, (data)=>{
+        handleFilled(data);
     });
 
 });

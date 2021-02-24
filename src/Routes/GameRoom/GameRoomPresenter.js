@@ -39,7 +39,7 @@ const ColorWrapper = styled.div`
 `
 
 const CanvasBox = styled.div`
-    width:700px;
+    width:100%;
     height : 700px;
     display:flex;
     justify-content : center;
