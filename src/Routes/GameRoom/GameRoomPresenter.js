@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import ChattingController from "../../Components/Chatting";
 import { ColorPick } from "../../Components/ColorPick";
 import { PaintButton } from "../../Components/PaintButton";
 
@@ -11,13 +12,21 @@ const CANVAS_HEIGHT = CONTAINER_HEIGHT * 2;
 
 
 const Wrapper = styled.div`
-    width:100vw;
-    height:80vh;
+    height:800px;
     display : flex;
-    flex-direction : column;
     justify-content : center;
     align-items : center;
 `
+
+const CanvasBox = styled.div`
+    width:700px;
+    height : 100%;
+    display:flex;
+    flex-direction:column;
+    justify-content : center;
+    align-items : center;
+`
+
 const ToolWrapper = styled.div`
     height:100%;
     display : flex;
@@ -38,13 +47,7 @@ const ColorWrapper = styled.div`
     }
 `
 
-const CanvasBox = styled.div`
-    width:100%;
-    height : 700px;
-    display:flex;
-    justify-content : center;
-    align-items : center;
-`
+
 
 const Canvas = styled.canvas`
     width:${CONTAINER_WIDTH}px;
@@ -66,26 +69,27 @@ export default ({canvasId}) => {
     return (
         <>
             <Wrapper>
-            <ToolWrapper>
-                <PaintButton text="Paint"/>
-                <ColorWrapper>
-                    <ColorArray>
-                        <ColorPick color="white"/>
-                        <ColorPick color="grey"/>
-                        <ColorPick color="black"/>
-                        <ColorPick color="red"/>
-                        <ColorPick color="orange"/>
-                    </ColorArray>
-                    <ColorArray>
-                        <ColorPick color="yellow"/>
-                        <ColorPick color="lightgreen"/>
-                        <ColorPick color="blue"/>
-                        <ColorPick color="navy"/>
-                        <ColorPick color="purple"/>
-                    </ColorArray>
-                </ColorWrapper>
-            </ToolWrapper>
                 <CanvasBox>
+                    <ToolWrapper>
+                        <PaintButton text="Paint"/>
+                        <ColorWrapper>
+                            <ColorArray>
+                                <ColorPick color="white"/>
+                                <ColorPick color="grey"/>
+                                <ColorPick color="black"/>
+                                <ColorPick color="red"/>
+                                <ColorPick color="orange"/>
+                            </ColorArray>
+                            <ColorArray>
+                                <ColorPick color="yellow"/>
+                                <ColorPick color="lightgreen"/>
+                                <ColorPick color="blue"/>
+                                <ColorPick color="navy"/>
+                                <ColorPick color="purple"/>
+                            </ColorArray>
+                        </ColorWrapper>
+                    </ToolWrapper>
+                
                     <Canvas width={CANVAS_WIDTH} height={CANVAS_HEIGHT} id={canvasId}/> 
                 </CanvasBox>
             </Wrapper>
