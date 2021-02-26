@@ -43,18 +43,18 @@ const Input = styled.input`
 `
 
 
-
 export default ({
     chatText,
+    onSubmit,
+    updateChats
 }) => {
-
-
+    console.log(updateChats)
     return (
         <Wrapper>
             <TextWrapper>
 
             </TextWrapper>
-            <SendWrapper>
+            <SendWrapper onSubmit={onSubmit}>
                 <Input value={chatText.value} onChange={chatText.onChange}/>
                 <Button>입력</Button>
             </SendWrapper>

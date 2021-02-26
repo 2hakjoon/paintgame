@@ -1,4 +1,5 @@
 import socketio from "socket.io-client";
+import { addNewChat } from "./Components/Chatting/ChattingController";
 import { handleBeganPath, handleFilled, handleStrokedPath } from "./Routes/GameRoom/CanvasController";
 
 const socket = socketio.connect('http://localhost:4000');
@@ -22,6 +23,9 @@ socket.on ('setCommend', async (data) => {
     socket.on(commends.fill, (data)=>{
         handleFilled(data);
     });
+    socket.on(commends.newMsg, (data)=>{
+        addNewChat(data);
+    })
 
 });
 
