@@ -3,7 +3,6 @@ import styled from "styled-components";
 import InputHook from "../../Hook/InputHook";
 import { commends, getSocket } from "../../Socket";
 import ChattingPresenter from "./ChattingPresenter";
-import updateChatHook from "../../Hook/updateChatHook";
 
 let chatList = []
 
