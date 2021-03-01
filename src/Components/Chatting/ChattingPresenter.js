@@ -45,6 +45,7 @@ const Input = styled.input`
 `
 
 const Chats = styled.div`
+    padding:10px;
     width:100%;
     height:100%;
     display:flex;
@@ -52,6 +53,13 @@ const Chats = styled.div`
 `
 const Chat = styled.div`
     width:100%;
+    display:flex;
+`
+const UserName = styled.div`
+    font-weight : bold;
+    margin-right: 5px;
+`
+const Msg = styled.div`
 `
 
 
@@ -65,7 +73,15 @@ export default ({
             <TextWrapper>
                 <Chats>
                 {msg.map((ms)=>
-                    <Chat keys={ms.text}>{ms.user} {ms.text}</Chat>
+                    <Chat key={Math.random()}>
+                        <UserName>
+                            {ms.user}
+                        </UserName> 
+                        <Msg>
+                            {ms.text}
+                        </Msg>
+                        
+                    </Chat>
                 )}
              </Chats>
             </TextWrapper>

@@ -40,13 +40,15 @@ export default () => {
     })
 
     const onSubmit= (e) => {
+        e.preventDefault();
         const chat = {
             user: getUserId(),
             text: ChatText.value
         }
-        e.preventDefault();
-        getSocket().emit(commends.sendMsg, chat)
+        getSocket().emit(commends.sendMsg, chat);
 
+        setTest(test=>[...test.concat(chat)])
+        ChatText.setValue="";
     }
     return (
         <>
