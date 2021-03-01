@@ -1,4 +1,4 @@
-import react from "react"
+import react,{useState} from "react"
 import styled from "styled-components"
 
 const Wrapper = styled.div`
@@ -16,7 +16,9 @@ const Wrapper = styled.div`
 const TextWrapper = styled.div`
     height:100%;
     display:flex;
+    flex-direction:column;
     align-items: center;
+
 `
 
 const SendWrapper = styled.form`
@@ -42,17 +44,30 @@ const Input = styled.input`
     border-radius: 50px;
 `
 
+const Chats = styled.div`
+    width:100%;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+`
+const Chat = styled.div`
+    width:100%;
+`
+
 
 export default ({
     chatText,
     onSubmit,
-    updateChats
+    msg
 }) => {
-    console.log(updateChats)
     return (
         <Wrapper>
             <TextWrapper>
-
+                <Chats>
+                {msg.map((ms)=>
+                    <Chat keys={ms.text}>{ms.user} {ms.text}</Chat>
+                )}
+             </Chats>
             </TextWrapper>
             <SendWrapper onSubmit={onSubmit}>
                 <Input value={chatText.value} onChange={chatText.onChange}/>

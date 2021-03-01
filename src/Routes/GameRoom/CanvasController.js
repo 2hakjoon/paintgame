@@ -1,4 +1,5 @@
-import { commends, getSocket } from "../../Socket";
+import commends from "../../Socket/Commends";
+import { getSocket } from "../../Socket/Socket";
 
 let canvas=''
 let ctx=''

@@ -2,6 +2,11 @@ const ITEMNAME_ID = 'paintGameId';
 
 export let UserLoggedIn = false;
 
+
+export const getUserId = () => {
+    return localStorage.getItem(ITEMNAME_ID)
+}
+
 export const makeUser = () =>{
     localStorage.setItem(ITEMNAME_ID, );
 } 
