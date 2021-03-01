@@ -37,6 +37,10 @@ export default () => {
     useEffect(()=>{
         clearInterval(int)
         int = setInterval(interval, 100);
+        if(document.getElementById("chats")){
+            const element = document.getElementById("chats");
+            element.scrollTop = element.scrollHeight;
+        }
     })
 
     const onSubmit= (e) => {
