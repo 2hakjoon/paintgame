@@ -15,6 +15,7 @@ const commends = {
     leaderNotif:"leaderNotif",
     gameEnded: "gameEnded",
     gameStarting:"gameStarting",
+    nicknameConfirm:"nicknameConfirm",
 }
 
 export default commends

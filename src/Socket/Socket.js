@@ -22,3 +22,4 @@ socket.on(commends.fill, (data)=>{
 socket.on(commends.newMsg, (data)=>{
     updateChats(data)
 })
+
