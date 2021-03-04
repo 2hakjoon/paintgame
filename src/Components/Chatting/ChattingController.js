@@ -1,6 +1,6 @@
 import react, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import { getUserId } from "../../Data/LocalStorage";
+import { getUserInfo } from "../../Data/LocalStorage";
 import InputHook from "../../Hook/InputHook";
 import commends from "../../Socket/Commends";
 import { getSocket } from "../../Socket/Socket";
@@ -45,9 +45,11 @@ export default () => {
 
     const onSubmit= (e) => {
         e.preventDefault();
+        const userInfo = getUserInfo();
         const chat = {
-            user: getUserId(),
-            text: ChatText.value
+            user: userInfo.userId,
+            text: ChatText.value,
+            color: userInfo.userColor
         }
         getSocket().emit(commends.sendMsg, chat);
 

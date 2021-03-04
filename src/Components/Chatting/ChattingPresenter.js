@@ -59,7 +59,9 @@ const Chat = styled.div`
 const UserName = styled.div`
     font-weight : bold;
     margin-right: 5px;
+    color : ${props => props.color};
 `
+
 const Msg = styled.div`
 `
 
@@ -69,13 +71,14 @@ export default ({
     onSubmit,
     msg
 }) => {
+    console.log(msg)
     return (
         <Wrapper>
             <TextWrapper>
                 <Chats id="chats">
                 {msg.map((ms)=>
                     <Chat key={Math.random()}>
-                        <UserName>
+                        <UserName color = {ms.color}>
                             {ms.user}
                         </UserName> 
                         <Msg>
