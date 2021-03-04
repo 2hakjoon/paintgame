@@ -1,12 +1,8 @@
 import styled from "styled-components";
 import Button from "../Components/Button";
-import { updateChats } from "../Components/Chatting/ChattingController";
 import Input from "../Components/Input";
 import { Bigtext } from "../Components/Text";
-import { getUserId, getUserInfo, makeUser } from "../Data/LocalStorage";
-import InputHook from "../Hook/InputHook";
-import commends from "../Socket/Commends";
-import { getSocket } from "../Socket/Socket";
+
 
 const Wrapper = styled.div`
     background: rgba(0, 0, 0, 0.6);
@@ -41,25 +37,11 @@ const Form = styled.form`
         margin : 10px;
     }
 `
-const socket = getSocket();
 
-
-
-export const ModalLogin = () => {
-    const nickname = InputHook("");
-    
-    const onSubmit = async(e) =>{
-        e.preventDefault();
-        socket.emit(commends.setNickname, nickname.value)
-        setTimeout(()=>{
-            if(getUserInfo() === null){
-                console.log("error")
-            }
-        }, 3000)
-        await socket.on(commends.nicknameConfirm, (data)=>{
-            makeUser(nickname.value, data)
-        })
-    }
+export default ({
+    onSubmit,
+    nickname,
+}) => {
     return(
         <Wrapper>
             <Box>
