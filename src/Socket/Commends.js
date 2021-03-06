@@ -1,6 +1,7 @@
 const commends = {
     setNickname : "setNickname",
     newUser : "newUser",
+    connect : "connect",
     disconnect : "disconnect",
     disconnected : "disconnected",
     sendMsg : "sendMsg",

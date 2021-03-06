@@ -23,3 +23,10 @@ socket.on(commends.newMsg, (data)=>{
     updateChats(data)
 })
 
+socket.on(commends.playerUpdate, (data)=>{
+    console.log(data);
+});
+socket.on(commends.gameStarted, (data)=>{
+    console.log(data);
+    updateChats(data)
+});
