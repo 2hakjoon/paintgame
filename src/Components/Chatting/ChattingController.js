@@ -1,5 +1,4 @@
-import react, { useEffect, useRef, useState } from "react";
-import styled from "styled-components";
+import  { useEffect, useState } from "react";
 import { getUserInfo } from "../../Data/LocalStorage";
 import InputHook from "../../Hook/InputHook";
 import commends from "../../Socket/Commends";
@@ -24,12 +23,12 @@ export const updateChats = (msg) => {
 
 export default () => {
     const ChatText = InputHook("");
-    const [test, setTest] = useState([]);
+    const [message, setMessage] = useState([]);
     
     const interval = () => {
         if(newChat === true){
-            setTest(test=>[...test.concat(chatList)]);
-            console.log(test);
+            setMessage(message=>[...message.concat(chatList)]);
+            console.log(message);
             newChat = false;
         }
     }
@@ -53,7 +52,7 @@ export default () => {
         }
         getSocket().emit(commends.sendMsg, chat);
 
-        setTest(test=>[...test.concat(chat)])
+        setMessage(message=>[...message.concat(chat)])
         ChatText.setValue="";
     }
     return (
@@ -61,7 +60,7 @@ export default () => {
             <ChattingPresenter
             chatText = {ChatText}
             onSubmit = {onSubmit}
-            msg={test}
+            msg={message}
             />
         </>
     )

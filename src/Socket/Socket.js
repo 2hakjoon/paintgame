@@ -28,5 +28,9 @@ socket.on(commends.playerUpdate, (data)=>{
 });
 socket.on(commends.gameStarted, (data)=>{
     console.log(data);
-    updateChats(data)
+    updateChats(data);
+});
+socket.on(commends.countDown, (data)=>{
+    console.log(data);
+    updateChats(data);
 });
