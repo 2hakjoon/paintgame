@@ -5,36 +5,30 @@ import commends from "../../Socket/Commends";
 import { getSocket } from "../../Socket/Socket";
 import ChattingPresenter from "./ChattingPresenter";
 
-
-
-let int = setInterval(console.log(), 1000);
-
-let chatList = []
-let newChat = false;
-
-export const updateChats = (msg) => {
-    chatList=[];
-    chatList.push(msg.data)
-    newChat = true;
-    if(chatList.length > 10){
-        chatList.splice(0,1)
-    }
-}
+let setListener = false;
 
 export default () => {
     const ChatText = InputHook("");
     const [message, setMessage] = useState([]);
-    
-    const interval = () => {
-        if(newChat === true){
-            setMessage(message=>[...message.concat(chatList)]);
-            newChat = false;
-        }
-    }
 
     useEffect(()=>{
-        clearInterval(int)
-        int = setInterval(interval, 100);
+        if(setListener === false){
+            getSocket().on(commends.newMsg, (data)=>{
+                setMessage(message=>[...message.concat(data.data)]);
+            })
+            getSocket().on(commends.playerUpdate, (data)=>{
+                setMessage(message=>[...message.concat(data.data)]);
+            });
+            getSocket().on(commends.gameStarted, (data)=>{
+                setMessage(message=>[...message.concat(data.data)]);
+            });            
+            getSocket().on(commends.gameEnded, (data)=>{
+                setMessage(message=>[...message.concat(data.data)]);
+            });
+        }
+        setListener = true;
+        
+
         if(document.getElementById("chats")){
             const element = document.getElementById("chats");
             element.scrollTop = element.scrollHeight;
