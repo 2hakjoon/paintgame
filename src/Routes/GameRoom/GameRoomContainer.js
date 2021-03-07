@@ -1,6 +1,6 @@
 import GameRoomPresenter from "./GameRoomPresenter";
 import ModalLogin from "../ModalLogin";
-import { getUserInfo, makeUser, UserLoggedIn } from "../../Data/LocalStorage";
+import { deleteUser, getUserInfo, makeUser, UserLoggedIn } from "../../Data/LocalStorage";
 import { useState } from "react";
 import commends from "../../Socket/Commends";
 import { getSocket } from "../../Socket/Socket";
@@ -10,6 +10,7 @@ import InputHook from "../../Hook/InputHook";
 const socket = getSocket();
 
 export default () => {
+    deleteUser();
     const [loginState, setLoginState] = useState(UserLoggedIn);
     const nickname = InputHook("");
     

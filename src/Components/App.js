@@ -16,9 +16,7 @@ const Wrapper = styled.div`
 
 `
 
-function App() {
-    CheckUser()
-    
+function App() {    
     useEffect(() => {
         initCanvas();
         enableCanvas();

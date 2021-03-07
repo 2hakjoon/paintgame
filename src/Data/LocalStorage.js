@@ -11,9 +11,19 @@ export const getUserInfo = () => {
 }
 
 
+
 export const makeUser = (userId, userColor) =>{
     localStorage.setItem(ITEMNAME_ID, userId);
     localStorage.setItem(ITEMNAME_COLOR, userColor);
+} 
+
+export const deleteUser = () =>{
+    if(localStorage.getItem(ITEMNAME_ID)){
+        localStorage.removeItem(ITEMNAME_ID);
+    }
+    if(localStorage.getItem(ITEMNAME_COLOR)){
+        localStorage.removeItem(ITEMNAME_COLOR);
+    }
 } 
 
 

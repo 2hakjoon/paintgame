@@ -24,13 +24,20 @@ socket.on(commends.newMsg, (data)=>{
 })
 
 socket.on(commends.playerUpdate, (data)=>{
-    console.log(data);
+    updateChats(data);
 });
 socket.on(commends.gameStarted, (data)=>{
-    console.log(data);
     updateChats(data);
 });
 socket.on(commends.countDown, (data)=>{
+    console.log(data);
+    updateChats(data);
+});
+socket.on(commends.painterNotif, (data, word)=>{
+    console.log(data);
+    updateChats(data);
+});
+socket.on(commends.gameEnded, (data)=>{
     console.log(data);
     updateChats(data);
 });

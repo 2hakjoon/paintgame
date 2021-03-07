@@ -44,21 +44,24 @@ export default () => {
 
     const onSubmit= (e) => {
         e.preventDefault();
-        const userInfo = getUserInfo();
-        const chat = {
-            user: userInfo.userId,
-            text: ChatText.value,
-            color: userInfo.userColor
+        if(ChatText.value !== ""){
+            const userInfo = getUserInfo();
+            const chat = {
+                user: userInfo.userId,
+                text: ChatText.value,
+                color: userInfo.userColor
+            }
+            getSocket().emit(commends.sendMsg, chat);
+            
+            setMessage(message=>[...message.concat(chat)])
+            ChatText.setValue("");
         }
-        getSocket().emit(commends.sendMsg, chat);
-
-        setMessage(message=>[...message.concat(chat)])
-        ChatText.setValue="";
     }
     return (
         <>
             <ChattingPresenter
-            chatText = {ChatText}
+            value = {ChatText.value}
+            onchange = {ChatText.onChange}
             onSubmit = {onSubmit}
             msg={message}
             />

@@ -66,7 +66,8 @@ const Msg = styled.div`
 
 
 export default ({
-    chatText,
+    onchange,
+    value,
     onSubmit,
     msg
 }) => {
@@ -89,8 +90,8 @@ export default ({
              </Chats>
             </TextWrapper>
             <SendWrapper onSubmit={onSubmit}>
-                <Input value={chatText.value} onChange={chatText.onChange}/>
-                <Button>입력</Button>
+                <Input value={value} onChange={onchange}/>
+                <Button onClick={onSubmit}>입력</Button>
             </SendWrapper>
         </Wrapper>
     )

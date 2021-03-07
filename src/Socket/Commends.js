@@ -13,7 +13,7 @@ const commends = {
     fill : "fill",
     playerUpdate : "playerUpdate",
     gameStarted:"gameStarted",
-    leaderNotif:"leaderNotif",
+    painterNotif:"painterNotif",
     gameEnded: "gameEnded",
     gameStarting:"gameStarting",
     nicknameConfirm:"nicknameConfirm",
