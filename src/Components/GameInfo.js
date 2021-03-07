@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import commends from "../Socket/Commends";
 import { getSocket } from "../Socket/Socket";
-import { updateChats } from "./Chatting/ChattingController";
 
 
 const Wrapper = styled.div`
@@ -21,20 +20,36 @@ const Word = styled.div`
     width : 100%;
     padding-left : 10px;
 `
+const Timer = styled.div`
+    padding-right : 10px;
+    width : 150px;
+`
+
+let setListener = false;
 
 export default (
 ) => {
     const [word, setWord] = useState("");
+    const [timer, setTimer] = useState("");
     useEffect(()=>{
-        getSocket().on(commends.painterNotif, (data)=>{
-            setWord(data);
-        });
+        if(setListener === false){
+            getSocket().on(commends.painterNotif, (data)=>{
+                setWord(data);
+            });
+            getSocket().on(commends.countDown, (data)=>{
+                setTimer(data);
+            })
+        }
+        setListener = true
     })
     return(
         <Wrapper>
             <Word>
-                제시어 : {word}
+                {word}
             </Word>
+            <Timer>
+                {timer}
+            </Timer>
         </Wrapper>
     )
 }
