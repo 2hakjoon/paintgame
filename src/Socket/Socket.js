@@ -1,5 +1,5 @@
 import socketio from "socket.io-client";
-import { addNewChat, updateChats } from "../Components/Chatting/ChattingController";
+import { updateChats } from "../Components/Chatting/ChattingController";
 import { handleBeganPath, handleFilled, handleStrokedPath } from "../Routes/GameRoom/CanvasController";
 import commends from "./Commends";
 
@@ -30,14 +30,9 @@ socket.on(commends.gameStarted, (data)=>{
     updateChats(data);
 });
 socket.on(commends.countDown, (data)=>{
-    console.log(data);
     updateChats(data);
 });
-socket.on(commends.painterNotif, (data, word)=>{
-    console.log(data);
-    updateChats(data);
-});
+
 socket.on(commends.gameEnded, (data)=>{
-    console.log(data);
     updateChats(data);
 });

@@ -54,6 +54,7 @@ const Chats = styled.div`
 const Chat = styled.div`
     width:100%;
     display:flex;
+    padding : 4px;
 `
 const UserName = styled.div`
     font-weight : bold;
@@ -71,7 +72,6 @@ export default ({
     onSubmit,
     msg
 }) => {
-    console.log(msg)
     return (
         <Wrapper>
             <TextWrapper>

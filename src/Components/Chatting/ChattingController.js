@@ -28,7 +28,6 @@ export default () => {
     const interval = () => {
         if(newChat === true){
             setMessage(message=>[...message.concat(chatList)]);
-            console.log(message);
             newChat = false;
         }
     }

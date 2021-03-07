@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import ChattingController from "../../Components/Chatting";
 import { ColorPick } from "../../Components/ColorPick";
+import GameInfo from "../../Components/GameInfo";
 import { PaintButton } from "../../Components/PaintButton";
 
 const CONTAINER_WIDTH = 600;
@@ -18,7 +19,7 @@ const Wrapper = styled.div`
     align-items : center;
 `
 
-const CanvasBox = styled.div`
+const PaintBox = styled.div`
     width:700px;
     height : 100%;
     display:flex;
@@ -48,6 +49,11 @@ const ColorWrapper = styled.div`
 `
 
 
+const CanvasBox = styled.div`
+    width:${CONTAINER_WIDTH}px;
+    height:${CONTAINER_HEIGHT}px;
+    position: relative;
+`
 
 const Canvas = styled.canvas`
     width:${CONTAINER_WIDTH}px;
@@ -69,7 +75,7 @@ export default ({canvasId}) => {
     return (
         <>
             <Wrapper>
-                <CanvasBox>
+                <PaintBox>
                     <ToolWrapper>
                         <PaintButton text="Paint"/>
                         <ColorWrapper>
@@ -89,9 +95,15 @@ export default ({canvasId}) => {
                             </ColorArray>
                         </ColorWrapper>
                     </ToolWrapper>
-                
-                    <Canvas width={CANVAS_WIDTH} height={CANVAS_HEIGHT} id={canvasId}/> 
-                </CanvasBox>
+                    <CanvasBox>
+                        <GameInfo>
+                                
+                        </GameInfo>
+                        <Canvas width={CANVAS_WIDTH} height={CANVAS_HEIGHT} id={canvasId}>
+
+                        </Canvas> 
+                    </CanvasBox>
+                </PaintBox>
             </Wrapper>
         </>
     )
