@@ -18,6 +18,7 @@ const commends = {
     gameStarting:"gameStarting",
     nicknameConfirm:"nicknameConfirm",
     countDown:"countDown",
+    userList:"userList",
 }
 
 export default commends

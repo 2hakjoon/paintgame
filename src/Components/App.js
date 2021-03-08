@@ -5,6 +5,7 @@ import GlobalStyles from "../Styles/GlobalStyles";
 import Theme from "../Styles/Theme";
 import { enableCanvas, initCanvas } from "../Routes/GameRoom/CanvasController";
 import ChattingController from "./Chatting";
+import ScoreBoardContainer from "./ScoreBoard/index";
 
 const Wrapper = styled.div`
     width:100%;
@@ -23,6 +24,9 @@ function App() {
         <ThemeProvider theme = {Theme}>
         <GlobalStyles />
             <Wrapper>
+                <ScoreBoardContainer>
+
+                </ScoreBoardContainer>
                 <GameRoom />
                 <ChattingController>
 

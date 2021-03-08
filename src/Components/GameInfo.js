@@ -14,6 +14,12 @@ const Wrapper = styled.div`
     border-top-right-radius:20px;
     border-bottom: 1px solid gray;
     align-items:center;
+    *{
+        -webkit-user-select: none;
+        -webkit-user-drag: none;
+        -webkit-app-region: no-drag;
+        cursor: default;
+    }
 `
 
 const Word = styled.div`
