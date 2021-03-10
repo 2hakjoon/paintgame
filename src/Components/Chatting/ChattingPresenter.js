@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import UserName from "../UserName"
 
 const Wrapper = styled.div`
     margin-top:200px;
@@ -56,11 +57,6 @@ const Chat = styled.div`
     display:flex;
     padding : 4px;
 `
-const UserName = styled.div`
-    font-weight : bold;
-    margin-right: 5px;
-    color : ${props => props.color};
-`
 
 const Msg = styled.div`
 `
@@ -78,9 +74,7 @@ export default ({
                 <Chats id="chats">
                 {msg.map((ms)=>
                     <Chat key={Math.random()}>
-                        <UserName color = {ms.color}>
-                            {ms.user}
-                        </UserName> 
+                        <UserName color = {ms.color} name = {ms.user}/>
                         <Msg>
                             {ms.text}
                         </Msg>

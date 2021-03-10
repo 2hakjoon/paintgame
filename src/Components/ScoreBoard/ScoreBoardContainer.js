@@ -1,22 +1,21 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import commends from "../../Socket/Commends";
 import { getSocket } from "../../Socket/Socket";
 import ScoreBoardPresentser from "./ScoreBoardPresentser"
 
 let setListener = false;
 
-export default ({}) =>{
-
+export default () =>{
+    const [userList, setUserList] = useState([]);
     useEffect(()=>{
-        if (setListener === false);
-        getSocket().on(commends.userList, data=>{
-            console.log(data)
-        });
+        if (setListener === false){
+            getSocket().on(commends.userList, data=>{
+                setUserList([...data]);
+            });
+        }
         setListener = true;
     })
     return(
-        <ScoreBoardPresentser>
-
-        </ScoreBoardPresentser>
+        <ScoreBoardPresentser userList={userList}/>
     )
 }
