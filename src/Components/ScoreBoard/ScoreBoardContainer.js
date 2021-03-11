@@ -10,7 +10,7 @@ export default () =>{
     useEffect(()=>{
         if (setListener === false){
             getSocket().on(commends.userList, data=>{
-                setUserList([...data]);
+                setUserList(userList.concat(data));
             });
         }
         setListener = true;
