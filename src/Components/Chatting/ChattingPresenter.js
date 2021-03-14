@@ -25,7 +25,7 @@ const SendWrapper = styled.form`
     border-top : 1px solid grey;
     display:flex;
     align-items:center;
-    height:80px;
+    height:40px;
 `
 
 const Button = styled.div`
@@ -34,20 +34,22 @@ const Button = styled.div`
     border-left : 1px solid gray;
     text-align: center;
     vertical-align: middle;
-    line-height: 70px;
+    line-height: 40px;
     cursor: pointer;
     
 `
 const Input = styled.input`
+    padding-left : 20px;
     width:100%;
     border:none;
     border-radius: 50px;
+    pointer-events : ${props => props.clickEn};
 `
 
 const Chats = styled.div`
     padding:10px;
     width:100%;
-    height:510px;
+    height:560px;
     display:flex;
     flex-direction:column;
     overflow: auto;
@@ -66,7 +68,8 @@ export default ({
     onchange,
     value,
     onSubmit,
-    msg
+    msg,
+    clickEn
 }) => {
     return (
         <Wrapper>
@@ -84,7 +87,7 @@ export default ({
              </Chats>
             </TextWrapper>
             <SendWrapper onSubmit={onSubmit}>
-                <Input value={value} onChange={onchange}/>
+                <Input clickEn = {clickEn} value={value} onChange={onchange}/>
                 <Button onClick={onSubmit}>입력</Button>
             </SendWrapper>
         </Wrapper>

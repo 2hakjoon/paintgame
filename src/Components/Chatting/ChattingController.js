@@ -7,14 +7,23 @@ import ChattingPresenter from "./ChattingPresenter";
 
 let setListener = false;
 
+
 export default () => {
     const ChatText = InputHook("");
     const [message, setMessage] = useState([]);
+    const [clickEn, setClickEn] = useState([]);
 
     useEffect(()=>{
         if(setListener === false){
             getSocket().on(commends.newMsg, (data)=>{
                 setMessage(message=>[...message.concat(data.data)]);
+                console.log(data.data.text)
+                if(data.data.text == "당신이 그릴 차례입니다."){
+                    setClickEn("none");
+                }
+                else{
+                    setClickEn("auto");
+                }
             })
             getSocket().on(commends.playerUpdate, (data)=>{
                 setMessage(message=>[...message.concat(data.data)]);
@@ -24,8 +33,6 @@ export default () => {
             });
         }
         setListener = true;
-        
-
         if(document.getElementById("chats")){
             const element = document.getElementById("chats");
             element.scrollTop = element.scrollHeight;
@@ -54,6 +61,7 @@ export default () => {
             onchange = {ChatText.onChange}
             onSubmit = {onSubmit}
             msg={message}
+            clickEn = {clickEn}
             />
         </>
     )
