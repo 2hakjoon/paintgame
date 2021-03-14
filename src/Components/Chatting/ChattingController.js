@@ -21,9 +21,6 @@ export default () => {
             });
             getSocket().on(commends.gameStarted, (data)=>{
                 setMessage(message=>[...message.concat(data.data)]);
-            });            
-            getSocket().on(commends.gameEnded, (data)=>{
-                setMessage(message=>[...message.concat(data.data)]);
             });
         }
         setListener = true;

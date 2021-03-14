@@ -5,6 +5,7 @@ let canvas=''
 let ctx=''
 let colors=[]
 let mode=''
+let controls = ''
 const INITIAL_COLOR = "#2c2c2c";
 const CANVAS_SIZE = 600;
 const CANVAS_PIXEL = CANVAS_SIZE*2;
@@ -14,7 +15,7 @@ export const initCanvas = () =>{
   
   ctx = canvas.getContext("2d");
   colors = document.getElementsByClassName("jsColor");
-  //const controls = document.getElementById("jsControls");
+  controls = document.getElementById("jsControls");
   mode = document.getElementById("jsMode");
 
   canvas.width = CANVAS_PIXEL;
@@ -33,7 +34,9 @@ export const initCanvas = () =>{
   if (mode) {
     mode.addEventListener("click", handlePaintClick);
   }
-  
+  resetCanvas();
+  disableCanvas();
+  hideControls();
 }
 let painting = false;
 
@@ -125,18 +128,16 @@ export const enableCanvas = () => {
   canvas.addEventListener("mouseup", stopPainting);
   canvas.addEventListener("mouseleave", stopPainting);
 };
-/*
+
 export const hideControls = () => {
-  controls.style.display = "none";
+  controls.style.visibility = "hidden";
 };
 export const showControls = () => {
-  controls.style.display = "flex";
+  controls.style.visibility = "visible";
 };
 export const resetCanvas = () => {
   fill("#fff");
 }
 if (canvas) {
   canvas.addEventListener("contextmenu", handleCM);
-  hideControls();
 }
-*/

@@ -19,6 +19,8 @@ const commends = {
     nicknameConfirm:"nicknameConfirm",
     countDown:"countDown",
     userList:"userList",
+    disablePaint:"disablePaint",
+    enablePaint:"enablePaint",
 }
 
 export default commends

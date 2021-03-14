@@ -76,8 +76,8 @@ export default ({canvasId}) => {
         <>
             <Wrapper>
                 <PaintBox>
-                    <ToolWrapper>
-                        <PaintButton text="Paint"/>
+                    <ToolWrapper id ="jsControls">
+                        <PaintButton text="Paint" />
                         <ColorWrapper>
                             <ColorArray>
                                 <ColorPick color="white"/>

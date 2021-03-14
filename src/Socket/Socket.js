@@ -1,5 +1,5 @@
 import socketio from "socket.io-client";
-import { handleBeganPath, handleFilled, handleStrokedPath } from "../Routes/GameRoom/CanvasController";
+import { disableCanvas, enableCanvas, handleBeganPath, handleFilled, handleStrokedPath, hideControls, resetCanvas, showControls } from "../Routes/GameRoom/CanvasController";
 import commends from "./Commends";
 
 const socket = socketio.connect('http://localhost:4000');
@@ -19,3 +19,18 @@ socket.on(commends.fill, (data)=>{
     handleFilled(data);
 });
 
+socket.on(commends.disablePaint, data =>{
+    disableCanvas();
+    hideControls();
+});
+
+socket.on(commends.enablePaint, data =>{
+    enableCanvas();
+    showControls();
+});
+
+socket.on(commends.gameEnded, data=>{
+    resetCanvas();
+    disableCanvas();
+    hideControls();
+});
