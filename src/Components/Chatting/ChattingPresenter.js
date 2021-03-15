@@ -43,7 +43,7 @@ const Input = styled.input`
     width:100%;
     border:none;
     border-radius: 50px;
-    pointer-events : ${props => props.clickEn};
+    visibility : ${props => props.clickEn};
 `
 
 const Chats = styled.div`

@@ -17,12 +17,14 @@ export default () => {
         if(setListener === false){
             getSocket().on(commends.newMsg, (data)=>{
                 setMessage(message=>[...message.concat(data.data)]);
-                console.log(data.data.text)
-                if(data.data.text == "당신이 그릴 차례입니다."){
-                    setClickEn("none");
-                }
-                else{
-                    setClickEn("auto");
+                console.log(data.data)
+                if(data.data.user === '-진행자-'){
+                    if(data.data.text === "당신이 그릴 차례입니다."){
+                        setClickEn("hidden");
+                    }
+                    else{
+                        setClickEn("visible");
+                    }
                 }
             })
             getSocket().on(commends.playerUpdate, (data)=>{
