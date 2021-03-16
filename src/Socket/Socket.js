@@ -30,6 +30,7 @@ socket.on(commends.enablePaint, data =>{
 });
 
 socket.on(commends.gameEnded, data=>{
+    handleStrokedPath(0,0,"white");
     resetCanvas();
     disableCanvas();
     hideControls();
