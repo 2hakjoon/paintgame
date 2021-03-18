@@ -1,8 +1,9 @@
 import socketio from "socket.io-client";
 import { disableCanvas, enableCanvas, handleBeganPath, handleFilled, handleStrokedPath, hideControls, resetCanvas, showControls } from "../Routes/GameRoom/CanvasController";
 import commends from "./Commends";
+require("dotenv").config();
 
-const socket = socketio.connect('https://paintgame-backend.herokuapp.com');
+const socket = socketio.connect(process.env.REACT_APP_DEV_BACKEND || 'https://paintgame-backend.herokuapp.com');
 
 export const getSocket = () =>{
     return socket;

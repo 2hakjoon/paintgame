@@ -41,13 +41,25 @@ export const initCanvas = () =>{
 let painting = false;
 
 
-function stopPainting() {
+function stopPainting(event) {
+  const x = event.offsetX*2;
+  const y = event.offsetY*2;
+  dot(x, y)
   painting = false;
 }
 
 function startPainting() {
   painting = true;
 }
+
+function dot(x,y) {
+  ctx.beginPath();
+  ctx.arc(x,y,1,0,Math.PI*2,true);
+  ctx.fill();
+  ctx.stroke();
+  ctx.closePath();
+}
+
 
 const beginPath = (x, y) => {
   ctx.beginPath();
@@ -120,6 +132,8 @@ export const disableCanvas = () => {
   canvas.removeEventListener("mousedown", startPainting);
   canvas.removeEventListener("mouseup", stopPainting);
   canvas.removeEventListener("mouseleave", stopPainting);
+  canvas.removeEventListener("ontouchstart", startPainting);
+  canvas.removeEventListener("ontouchmove", onMouseMove);
 };
 
 export const enableCanvas = () => {
@@ -127,6 +141,8 @@ export const enableCanvas = () => {
   canvas.addEventListener("mousedown", startPainting);
   canvas.addEventListener("mouseup", stopPainting);
   canvas.addEventListener("mouseleave", stopPainting);
+  canvas.addEventListener("ontouchstart", startPainting);
+  canvas.addEventListener("ontouchmove", onMouseMove);
 };
 
 export const hideControls = () => {
