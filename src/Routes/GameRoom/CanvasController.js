@@ -6,6 +6,8 @@ let ctx=''
 let colors=[]
 let mode=''
 let controls = ''
+let lastx = 0;
+let lasty = 0;
 const INITIAL_COLOR = "#2c2c2c";
 const CANVAS_SIZE = 600;
 const CANVAS_PIXEL = CANVAS_SIZE*2;
@@ -60,6 +62,25 @@ function dot(x,y) {
   ctx.closePath();
 }
 
+function line(fromx,fromy, tox,toy) {
+  ctx.beginPath();
+  ctx.moveTo(fromx, fromy);
+  ctx.lineTo(tox, toy);
+  ctx.stroke();
+  ctx.closePath();
+}
+
+const touchmove = (event) => {                   
+  event.preventDefault();                 
+
+  const newx = event.touches[0].clientX;
+  const newy = event.touches[0].clientY;
+
+  line(lastx,lasty, newx,newy);
+  
+  lastx = newx;
+  lasty = newy;
+}
 
 const beginPath = (x, y) => {
   ctx.beginPath();
@@ -133,7 +154,7 @@ export const disableCanvas = () => {
   canvas.removeEventListener("mouseup", stopPainting);
   canvas.removeEventListener("mouseleave", stopPainting);
   canvas.removeEventListener("ontouchstart", startPainting);
-  canvas.removeEventListener("ontouchmove", onMouseMove);
+  canvas.removeEventListener("ontouchmove", touchmove);
 };
 
 export const enableCanvas = () => {
@@ -142,7 +163,7 @@ export const enableCanvas = () => {
   canvas.addEventListener("mouseup", stopPainting);
   canvas.addEventListener("mouseleave", stopPainting);
   canvas.addEventListener("ontouchstart", startPainting);
-  canvas.addEventListener("ontouchmove", onMouseMove);
+  canvas.addEventListener("ontouchmove", touchmove);
 };
 
 export const hideControls = () => {
