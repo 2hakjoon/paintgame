@@ -73,8 +73,8 @@ function line(fromx,fromy, tox,toy) {
 const touchmove = (event) => {                   
   event.preventDefault();                 
 
-  const newx = event.touches[0].clientX;
-  const newy = event.touches[0].clientY;
+  const newx = event.offsetX*2;
+  const newy = event.offsetY*2;
 
   line(lastx,lasty, newx,newy);
   
