@@ -1,5 +1,5 @@
 import socketio from "socket.io-client";
-import { disableCanvas, enableCanvas, handleBeganPath, handleFilled, handleStrokedPath, hideControls, resetCanvas, showControls } from "../Routes/GameRoom/CanvasController";
+import { disableCanvas, enableCanvas, handleBeganPath, handleDot, handleFilled, handleStrokedPath, hideControls, resetCanvas, showControls } from "../Routes/GameRoom/CanvasController";
 import commends from "./Commends";
 require("dotenv").config();
 
@@ -35,4 +35,8 @@ socket.on(commends.gameEnded, data=>{
     resetCanvas();
     disableCanvas();
     hideControls();
+});
+
+socket.on(commends.drawDot, (data)=>{
+    handleDot(data);
 });

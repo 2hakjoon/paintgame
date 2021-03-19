@@ -10,6 +10,7 @@ const commends = {
     strokePath : "strokePath",
     beganPath : "beganPath",
     strokedPath : "strokedPath",
+    drawDot : "drawDot",
     fill : "fill",
     playerUpdate : "playerUpdate",
     gameStarted:"gameStarted",

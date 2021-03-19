@@ -6,8 +6,8 @@ let ctx=''
 let colors=[]
 let mode=''
 let controls = ''
-let lastx = 0;
-let lasty = 0;
+let lastx;
+let lasty;
 const INITIAL_COLOR = "#2c2c2c";
 const CANVAS_SIZE = 600;
 const CANVAS_PIXEL = CANVAS_SIZE*2;
@@ -60,27 +60,42 @@ function dot(x,y) {
   ctx.fill();
   ctx.stroke();
   ctx.closePath();
+  getSocket().emit(commends.drawDot,{x, y})
 }
-
-function line(fromx,fromy, tox,toy) {
+export const handleDot = ({data})=> {
+  console.log(data.x)
   ctx.beginPath();
-  ctx.moveTo(fromx, fromy);
-  ctx.lineTo(tox, toy);
+  ctx.arc(data.x, data.y ,1,0,Math.PI*2,true);
+  ctx.fill();
   ctx.stroke();
   ctx.closePath();
 }
 
-const touchmove = (event) => {                   
-  event.preventDefault();                 
 
-  const newx = event.offsetX*2;
-  const newy = event.offsetY*2;
-
-  line(lastx,lasty, newx,newy);
+const touchstart = (event) => {     
+  var rect = canvas.getBoundingClientRect();                      
+  const x = (event.touches[0].clientX - rect.left)*2;
+  const y = (event.touches[0].clientY - rect.top)*2;
   
-  lastx = newx;
-  lasty = newy;
+  beginPath(x, y);
+  getSocket().emit(commends.beginPath, { x, y });
 }
+
+const touchmove = (event) => {    
+  event.preventDefault();                           
+  var rect = canvas.getBoundingClientRect();
+  const x = (event.touches[0].clientX - rect.left)*2;
+  const y = (event.touches[0].clientY - rect.top)*2;
+  strokePath(x, y);
+  getSocket().emit(commends.strokePath, 
+    {x, y, color: ctx.strokeStyle});
+}
+
+const touchend = (event) => {
+  lastx=undefined;
+  lasty=undefined;
+}
+
 
 const beginPath = (x, y) => {
   ctx.beginPath();
@@ -153,8 +168,9 @@ export const disableCanvas = () => {
   canvas.removeEventListener("mousedown", startPainting);
   canvas.removeEventListener("mouseup", stopPainting);
   canvas.removeEventListener("mouseleave", stopPainting);
-  canvas.removeEventListener("touchstart", startPainting);
+  canvas.removeEventListener("touchstart", touchstart);
   canvas.removeEventListener("touchmove", touchmove);
+  canvas.removeEventListener("touchend", touchend);
 };
 
 export const enableCanvas = () => {
@@ -162,8 +178,9 @@ export const enableCanvas = () => {
   canvas.addEventListener("mousedown", startPainting);
   canvas.addEventListener("mouseup", stopPainting);
   canvas.addEventListener("mouseleave", stopPainting);
-  canvas.addEventListener("touchstart", startPainting);
+  canvas.addEventListener("touchstart", touchstart);
   canvas.addEventListener("touchmove", touchmove);
+  canvas.addEventListener("touchend", touchend);
 };
 
 export const hideControls = () => {
