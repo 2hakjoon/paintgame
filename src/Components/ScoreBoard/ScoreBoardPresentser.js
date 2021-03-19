@@ -58,7 +58,6 @@ const Score = styled.div`
 export default ({
     userList
 }) => {
-    console.log(userList)
     return(
         <ScoreBoard>
             <RankingWrapper>

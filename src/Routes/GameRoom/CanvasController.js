@@ -153,8 +153,8 @@ export const disableCanvas = () => {
   canvas.removeEventListener("mousedown", startPainting);
   canvas.removeEventListener("mouseup", stopPainting);
   canvas.removeEventListener("mouseleave", stopPainting);
-  canvas.removeEventListener("ontouchstart", startPainting);
-  canvas.removeEventListener("ontouchmove", touchmove);
+  canvas.removeEventListener("touchstart", startPainting);
+  canvas.removeEventListener("touchmove", touchmove);
 };
 
 export const enableCanvas = () => {
@@ -162,8 +162,8 @@ export const enableCanvas = () => {
   canvas.addEventListener("mousedown", startPainting);
   canvas.addEventListener("mouseup", stopPainting);
   canvas.addEventListener("mouseleave", stopPainting);
-  canvas.addEventListener("ontouchstart", startPainting);
-  canvas.addEventListener("ontouchmove", touchmove);
+  canvas.addEventListener("touchstart", startPainting);
+  canvas.addEventListener("touchmove", touchmove);
 };
 
 export const hideControls = () => {
