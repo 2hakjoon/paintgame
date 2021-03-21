@@ -59,7 +59,7 @@ export default ({
     userList
 }) => {
     return(
-        <ScoreBoard>
+        <ScoreBoard  id = "scoreBoard">
             <RankingWrapper>
                 {userList.map((_, index)=>
                     <Ranking key={index}>

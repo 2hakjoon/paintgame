@@ -46,11 +46,11 @@ export default ({
         <Wrapper>
             <Box>
                 <Bigtext>
-                    Login
+                    로그인
                 </Bigtext>
                 <Form onSubmit={onSubmit}>
-                    <Input placeholder = "ID를 입력하세요." value={nickname.value} onChange={nickname.onChange}/>
-                    <Button text="로그인"/>
+                    <Input placeholder = "닉네임을 입력하세요." value={nickname.value} onChange={nickname.onChange}/>
+                    <Button text="입장"/>
                 </Form>
             </Box>
         </Wrapper>

@@ -72,8 +72,8 @@ export default ({
     clickEn
 }) => {
     return (
-        <Wrapper>
-            <TextWrapper>
+        <Wrapper  id = "chattingBoard">
+            <TextWrapper id = "chatListWrapper">
                 <Chats id="chats">
                 {msg.map((ms)=>
                     <Chat key={Math.random()}>

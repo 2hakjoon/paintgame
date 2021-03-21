@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import ChattingController from "../../Components/Chatting";
 import { ColorPick } from "../../Components/ColorPick";
 import GameInfo from "../../Components/GameInfo";
 import { PaintButton } from "../../Components/PaintButton";
@@ -20,12 +19,13 @@ const Wrapper = styled.div`
 `
 
 const PaintBox = styled.div`
-    width:700px;
+    width:600px;
     height : 100%;
     display:flex;
     flex-direction:column;
     justify-content : center;
     align-items : center;
+    margin:0px 50px;
 `
 
 const ToolWrapper = styled.div`
@@ -37,7 +37,6 @@ const ToolWrapper = styled.div`
 
 const ColorWrapper = styled.div`
     width:100%;
-    height:100%;
     display : flex;
     flex-direction:column;
     justify-content : center;
@@ -50,14 +49,14 @@ const ColorWrapper = styled.div`
 
 
 const CanvasBox = styled.div`
-    width:${CONTAINER_WIDTH}px;
-    height:${CONTAINER_HEIGHT}px;
+    width:100%;
+    height:100%;
     position: relative;
 `
 
 const Canvas = styled.canvas`
-    width:${CONTAINER_WIDTH}px;
-    height:${CONTAINER_HEIGHT}px;
+    width:100%;
+    height:100%;
     background-color : white;
     border : 1px solid whitesmoke;
     box-shadow:${props => props.theme.normalShadow};
@@ -74,8 +73,8 @@ const ColorArray = styled.div`
 export default ({canvasId}) => {
     return (
         <>
-            <Wrapper>
-                <PaintBox>
+            <Wrapper id = "paintWrapper">
+                <PaintBox id = "paintBox">
                     <ToolWrapper id ="jsControls">
                         <PaintButton text="Paint" />
                         <ColorWrapper>
@@ -95,7 +94,7 @@ export default ({canvasId}) => {
                             </ColorArray>
                         </ColorWrapper>
                     </ToolWrapper>
-                    <CanvasBox>
+                    <CanvasBox id = "canvasBox">
                         <GameInfo>
                                 
                         </GameInfo>

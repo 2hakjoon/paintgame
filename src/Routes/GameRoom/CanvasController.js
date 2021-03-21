@@ -1,6 +1,7 @@
 import commends from "../../Socket/Commends";
 import { getSocket } from "../../Socket/Socket";
 
+
 let canvas=''
 let ctx=''
 let colors=[]
@@ -9,8 +10,7 @@ let controls = ''
 let lastx;
 let lasty;
 const INITIAL_COLOR = "#2c2c2c";
-const CANVAS_SIZE = 600;
-const CANVAS_PIXEL = CANVAS_SIZE*2;
+const CANVAS_PIXEL = 1200;
 
 export const initCanvas = () =>{
   canvas = document.getElementById("jsCanvas");
