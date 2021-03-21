@@ -10,6 +10,7 @@ let controls = ''
 let lastx;
 let lasty;
 const INITIAL_COLOR = "#2c2c2c";
+const WINDOWSIZE = window.screen.width;
 const CANVAS_PIXEL = 1200;
 
 export const initCanvas = () =>{
@@ -74,8 +75,8 @@ export const handleDot = ({data})=> {
 
 const touchstart = (event) => {     
   var rect = canvas.getBoundingClientRect();                      
-  const x = (event.touches[0].clientX - rect.left)*2;
-  const y = (event.touches[0].clientY - rect.top)*2;
+  const x = (((event.touches[0].clientX - rect.left)%WINDOWSIZE)*1200)*2;
+  const y = (((event.touches[0].clientY - rect.top)%WINDOWSIZE)*1200)*2;
   
   beginPath(x, y);
   getSocket().emit(commends.beginPath, { x, y });
@@ -84,14 +85,18 @@ const touchstart = (event) => {
 const touchmove = (event) => {    
   event.preventDefault();                           
   var rect = canvas.getBoundingClientRect();
-  const x = (event.touches[0].clientX - rect.left)*2;
-  const y = (event.touches[0].clientY - rect.top)*2;
+  const x = (((event.touches[0].clientX - rect.left)%WINDOWSIZE)*1200)*2;
+  const y = (((event.touches[0].clientY - rect.top)%WINDOWSIZE)*1200)*2;
   strokePath(x, y);
   getSocket().emit(commends.strokePath, 
     {x, y, color: ctx.strokeStyle});
 }
 
-const touchend = (event) => {
+const touchend = (event) => {                           
+  var rect = canvas.getBoundingClientRect();
+  const x = (((event.touches[0].clientX - rect.left)%WINDOWSIZE)*1200)*2;
+  const y = (((event.touches[0].clientY - rect.top)%WINDOWSIZE)*1200)*2;
+  dot(x, y);
   lastx=undefined;
   lasty=undefined;
 }
