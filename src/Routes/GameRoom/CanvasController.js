@@ -47,7 +47,9 @@ let painting = false;
 function stopPainting(event) {
   const x = event.offsetX*2;
   const y = event.offsetY*2;
-  dot(x, y)
+  if(WINDOWSIZE >=600){
+    dot(x, y)
+  }
   painting = false;
 }
 
@@ -75,8 +77,8 @@ export const handleDot = ({data})=> {
 
 const touchstart = (event) => {     
   var rect = canvas.getBoundingClientRect();                      
-  const x = (((event.touches[0].clientX - rect.left)%WINDOWSIZE)*1200)*2;
-  const y = (((event.touches[0].clientY - rect.top)%WINDOWSIZE)*1200)*2;
+  const x = Math.floor(((event.touches[0].clientX - rect.left)/WINDOWSIZE)*1200);
+  const y = Math.floor(((event.touches[0].clientY - rect.top)/WINDOWSIZE)*1200);
   
   beginPath(x, y);
   getSocket().emit(commends.beginPath, { x, y });
@@ -85,18 +87,21 @@ const touchstart = (event) => {
 const touchmove = (event) => {    
   event.preventDefault();                           
   var rect = canvas.getBoundingClientRect();
-  const x = (((event.touches[0].clientX - rect.left)%WINDOWSIZE)*1200)*2;
-  const y = (((event.touches[0].clientY - rect.top)%WINDOWSIZE)*1200)*2;
+  const x = Math.floor(((event.touches[0].clientX - rect.left)/WINDOWSIZE)*1200);
+  const y = Math.floor(((event.touches[0].clientY - rect.top)/WINDOWSIZE)*1200);
+
   strokePath(x, y);
   getSocket().emit(commends.strokePath, 
     {x, y, color: ctx.strokeStyle});
 }
 
 const touchend = (event) => {                           
+
+  
   var rect = canvas.getBoundingClientRect();
-  const x = (((event.touches[0].clientX - rect.left)%WINDOWSIZE)*1200)*2;
-  const y = (((event.touches[0].clientY - rect.top)%WINDOWSIZE)*1200)*2;
-  dot(x, y);
+  const x = Math.floor(((event.changedTouches[0].clientX - rect.left)/WINDOWSIZE)*1200);
+  const y = Math.floor(((event.changedTouches[0].clientY - rect.top)/WINDOWSIZE)*1200);
+  dot(x,y);
   lastx=undefined;
   lasty=undefined;
 }
