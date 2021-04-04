@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import propTypes from "prop-types";
+import { INITIAL_COLOR } from "../Routes/GameRoom/CanvasController";
+
+
 
 const getColor = (color) => {
     return `background-color : ${color};`
 }
+
 
 const Circle = styled.div`
     ${props => getColor(props.color)}
@@ -13,11 +17,35 @@ const Circle = styled.div`
     border-radius : 27px;
     cursor: pointer;
     box-shadow:${props => props.theme.smallShadow};
+    border : ${props => props.border};
 `
 
 export const ColorPick = ({color}) => {
+    let colors = "";
+    useEffect(()=>{
+        colors = document.getElementsByClassName("jsColor");
+    })
+    let border = "";
+
+    if(INITIAL_COLOR === color){
+        border = "CornflowerBlue 4px solid";
+    }
+    else{
+        border = "none";
+    }
+    const onClick=(e)=>{
+        Array.from(colors).forEach((color) =>
+            color.style.border = "none"
+        );
+        const selectedColor = e.target.id;
+        if(selectedColor === color){
+            document.getElementById(`${selectedColor}`).style.border = "CornflowerBlue 4px solid"
+        }
+    }
+    
+
     return (
-        <Circle id={color} color={color} className="jsColor"/>
+        <Circle id={color} color={color} onClick={onClick} border={border}className="jsColor"/>
     )
 
 }

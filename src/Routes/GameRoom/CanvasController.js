@@ -9,7 +9,7 @@ let mode=''
 let controls = ''
 let lastx;
 let lasty;
-const INITIAL_COLOR = "#2c2c2c";
+export const INITIAL_COLOR = "black";
 const WINDOWSIZE = window.screen.width;
 const CANVAS_PIXEL = 1200;
 
@@ -66,7 +66,6 @@ function dot(x,y) {
   getSocket().emit(commends.drawDot,{x, y})
 }
 export const handleDot = ({data})=> {
-  console.log(data.x)
   ctx.beginPath();
   ctx.arc(data.x, data.y ,1,0,Math.PI*2,true);
   ctx.fill();
