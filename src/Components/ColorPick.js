@@ -22,16 +22,14 @@ const Circle = styled.div`
 
 export const ColorPick = ({color}) => {
     let colors = "";
+    let border = "none";
+    
     useEffect(()=>{
         colors = document.getElementsByClassName("jsColor");
     })
-    let border = "";
 
     if(INITIAL_COLOR === color){
         border = "CornflowerBlue 4px solid";
-    }
-    else{
-        border = "none";
     }
     const onClick=(e)=>{
         Array.from(colors).forEach((color) =>
