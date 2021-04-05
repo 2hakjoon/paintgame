@@ -15,6 +15,7 @@ const Wrapper = styled.div`
 @media screen and (max-width: 600px) {
     flex-direction : column;
     align-items : center;
+    justify-content : space-between;
     max-height : 100vh;
     max-width : 100vw;
     #scoreBoard{
@@ -24,10 +25,10 @@ const Wrapper = styled.div`
         width : 100%;
         margin-top:25px;
         #chatListWrapper{
-            max-height : 100px;
+            max-height : 120px;
         }
         #chats{
-            max-height : 100px;
+            max-height : 120px;
         }
     }
     #paintWrapper{
