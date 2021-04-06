@@ -23,9 +23,10 @@ const Wrapper = styled.div`
     }
     #chattingBoard{
         width : 100%;
+        height : 150px;
         margin-top:25px;
         #chatListWrapper{
-            height : 100%;
+            height : 110px;
         }
         #chats{
             height : 100%;
@@ -42,9 +43,8 @@ const Wrapper = styled.div`
         #jsControls{
             height:100%;
         }
-        
         #canvasBox{
-        width : 100%;
+            width : 100%;
         } 
     }
     .jsColor{
