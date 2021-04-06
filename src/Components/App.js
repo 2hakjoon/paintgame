@@ -13,8 +13,6 @@ const Wrapper = styled.div`
     justify-content:center;
     
 @media screen and (max-width: 600px) {
-    width:100vw;
-    height : 100vh;
     flex-direction : column;
     align-items : center;
     justify-content : space-between;
