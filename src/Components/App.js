@@ -16,8 +16,6 @@ const Wrapper = styled.div`
     flex-direction : column;
     align-items : center;
     justify-content : space-between;
-    max-height : 100vh;
-    max-width : 100vw;
     #scoreBoard{
         display:none;
     }
@@ -39,9 +37,13 @@ const Wrapper = styled.div`
         width:100%;
         height:100%;
         margin : 0px;
-    }
-    #canvasBox{
+        #jsControls{
+            height:100%;
+        }
+        
+        #canvasBox{
         width : 100%;
+        } 
     }
     .jsColor{
         width:40px;
