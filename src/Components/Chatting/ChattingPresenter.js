@@ -20,7 +20,6 @@ const TextWrapper = styled.div`
     align-items: center;
 
 `
-
 const SendWrapper = styled.form`
     border-top : 1px solid grey;
     display:flex;
@@ -56,6 +55,7 @@ const Chats = styled.div`
 `
 const Chat = styled.div`
     width:100%;
+    height:18px;
     display:flex;
     padding : 4px;
 `
