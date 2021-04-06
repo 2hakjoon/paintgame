@@ -13,6 +13,8 @@ const Wrapper = styled.div`
     justify-content:center;
     
 @media screen and (max-width: 600px) {
+    width:100vw;
+    height : 100vh;
     flex-direction : column;
     align-items : center;
     justify-content : space-between;
@@ -23,10 +25,10 @@ const Wrapper = styled.div`
         width : 100%;
         margin-top:25px;
         #chatListWrapper{
-            height : 120px;
+            height : 100%;
         }
         #chats{
-            height : 120px;
+            height : 100%;
         }
     }
     #paintWrapper{
