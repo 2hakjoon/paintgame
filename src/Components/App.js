@@ -23,10 +23,10 @@ const Wrapper = styled.div`
         width : 100%;
         margin-top:25px;
         #chatListWrapper{
-            max-height : 120px;
+            height : 120px;
         }
         #chats{
-            max-height : 120px;
+            height : 120px;
         }
     }
     #paintWrapper{
