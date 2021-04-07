@@ -54,6 +54,7 @@ const Chats = styled.div`
     overflow: auto;
 `
 const Chat = styled.div`
+    flex-shrink: 0;
     width:100%;
     height:18px;
     display:flex;
