@@ -12,7 +12,7 @@ const Wrapper = styled.div`
     display:flex;
     justify-content:center;
     
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1200px) {
     flex-direction : column;
     align-items : center;
     justify-content : space-between;
